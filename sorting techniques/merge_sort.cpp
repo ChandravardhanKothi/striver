@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-void print(vector<int> &arr);
-void printmiddle(vector<int> &arr, int f, int n);
-void ms(vector<int> &arr, int low, int high);
+void print(vector<int> &arr);                     // this prints the vector
+void printmiddle(vector<int> &arr, int f, int n); // prints the vector from f to r indexes, this is used for better understanding to print all the split branches
+void ms(vector<int> &arr, int low, int high);     // ms is short for merge sort where
 void merge(vector<int> &arr, int low, int mid, int high);
 
 int main()
@@ -13,6 +13,7 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    // this only works with input and output file
     vector<int> arr;
     int ele;
     for (int i = 0; i < 10; i++)
@@ -20,7 +21,6 @@ int main()
         cin >> ele;
         arr.push_back(ele);
     }
-    print(arr);
     ms(arr, 0, 9);
     print(arr);
 }
@@ -33,16 +33,14 @@ void printmiddle(vector<int> &arr, int f, int n)
         cout << arr[i] << " ";
     }
     cout << "----";
-}
+} // just igone this
 
-void print(vector<int> &arr)
+void print(vector<int> &arr) // just ignore this
 {
-    cout << endl;
     for (auto it : arr)
     {
         cout << it << " ";
     }
-    cout << endl;
 }
 
 void ms(vector<int> &arr, int low, int high)
@@ -51,9 +49,9 @@ void ms(vector<int> &arr, int low, int high)
     if (low == high)
         return;
     int mid = (low + high) / 2;
-    printmiddle(arr, low, mid);
+    // printmiddle(arr, low, mid);
     ms(arr, low, mid);
-    printmiddle(arr, mid + 1, high);
+    // printmiddle(arr, mid + 1, high);
     ms(arr, mid + 1, high);
     merge(arr, low, mid, high);
 }
@@ -90,5 +88,5 @@ void merge(vector<int> &arr, int low, int mid, int high)
     {
         arr[i] = temp[i - low];
     }
-    print(arr);
+    // print(arr);
 }
